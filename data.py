@@ -1,8 +1,9 @@
 import requests
 import pandas as pd
-from datetime import datetime
+# from datetime import datetime
 import constants as const
 from dash.exceptions import PreventUpdate
+import numpy as np
 # import json
 # import ast
 
@@ -40,18 +41,52 @@ def get_data(country):
 # def get_all_data():
 #     url = 'https://api.covid19api.com/all'
 #     json_string = requests.get(url).json()
+#     df = pd.DataFrame(json_string)
+#     # 'Country' is a column as well
+#     df = df[['CountryCode', 'Confirmed', 'Deaths', 'Recovered', 'Date']]
+#     collection = df[df['CountryCode'] == 'IN'][[
+#         'Confirmed', 'Deaths', 'Recovered', 'Date']]
+    # collection = pd.MultiIndex.from_product([['IN'], collection.columns])
+    # for code in df['CountryCode'].unique():
+    #     if code == 'IN':
+    #         continue
+    #     temp = df[['Confirmed', 'Deaths', 'Recovered', 'Date']]
+    #     temp.columns = pd.MultiIndex.from_product([[code], temp.columns])
+    #     collection.append(temp)
+    # print(collection)
+
+    # label = label.title()
+    # dailyStr = 'Daily'+label
+    # df[dailyStr] = df[label] - df[label].shift()
+    # # Redundancy in case calculations gives negative number
+    # df[dailyStr] = df[dailyStr].apply(abs)
+    # df.fillna(value=0, inplace=True)
+    # print(df.memory_usage(index=True).sum())
+    # # df = reduce_data(df)
+    # df['DailyConfirmed'] = df['DailyConfirmed'].astype(np.int32)
+    # df['DailyDeaths'] = df['DailyDeaths'].astype(np.int16)
+    # df['DailyRecovered'] = df['DailyRecovered'].astype(np.int32)
+    # print(df.columns)
+    # print(df.memory_usage(index=True).sum())
+
+    # df.to_csv('test.csv')
+    # print(df[df['CountryCode'] == 'AF'])
     # jsondict = dict(json_string)
     # everything = jsondict.get('data')
     # print(jsondict.keys())
-    # df = pd.DataFrame(json_string)
-    # df = df[['Country', 'CountryCode', 'Confirmed', 'Deaths', 'Recovered', 'Date']]
-    # df.to_csv('test.csv')
-    # print(df.memory_usage(index=True).sum())
-    # df['DailyConfirmed'] = df['Confirmed'] - df['Confirmed'].shift()
-    #     df['Daily'] = df['Daily'].apply(abs)
-    #     df.fillna(value=0, inplace=True)
-    # print(df[df['CountryCode'] == 'AF'])
-
 
 # if datetime.today().hour == 18:
 #     get_all_data()
+
+
+# def reduce_data(df):
+#     df['Confirmed'] = df['Confirmed'].apply(reduce_column_size)
+#     return df
+
+
+# def reduce_column_size(value):
+#     # if value < 128:
+#     return np.int64(value)
+
+
+# get_all_data()

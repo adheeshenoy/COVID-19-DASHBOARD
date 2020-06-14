@@ -13,9 +13,9 @@ import graphGenerator as gg
 from datetime import datetime
 import numpy as np
 
-app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY],
-                meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}]
-            )
+app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
+
+server = app.server
 
 # Navigation 
 navbar = dbc.NavbarSimple(
@@ -94,6 +94,13 @@ app.layout = html.Div([
         navbar
     ], id ='banner'),
     html.Div([
+        dbc.Alert(
+            "The website was put in landscape for better visualization.",
+            id="warning",
+            dismissable=True,
+            fade=True,
+            color = 'warning',
+        ),
         country_dropdown,
         graph_dropdown,
         dbc.Alert(
@@ -104,9 +111,6 @@ app.layout = html.Div([
             is_open= False,
             color = 'danger',
             duration = 2000
-        ),
-        dcc.ConfirmDialog(
-            id='warning'
         )
     ], id = 'dropdowns'),
     html.Div([
@@ -116,8 +120,8 @@ app.layout = html.Div([
         stat_selector
             ),
     html.Div([
-        dcc.Graph(id = 'map', className = 'country',config = dict(scrollZoom = False, displaylogo = False, displayModeBar = False), responsive = False)
-    ])
+        dcc.Graph(id = 'map', className = 'country',config = dict(scrollZoom = False, displaylogo = False, displayModeBar = False))
+    ], className = 'mapify')
 ])
 
 @app.callback(
@@ -249,19 +253,6 @@ def update_graph(confirmed, recovered, deaths, graphType, country):
     except Exception as e:
         print('Update Graph: ', e)
         raise PreventUpdate
-
-@app.callback(
-    [Output('warning','displayed'),
-    Output('warning','message')],
-    [Input('confirmed-data', 'data'),
-    Input('country-dropdown', 'value')]
-)
-def throw_error(confirmed, country):
-    if not confirmed:
-        return True, const.WARNING_MESSAGE.format(country = country)
-    else:
-        return False, ''
-
 
 @app.callback(
     [Output('alert', 'is_open'),

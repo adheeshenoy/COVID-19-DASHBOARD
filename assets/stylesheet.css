@@ -1,14 +1,44 @@
-/* @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-    html {
-      transform: rotate(-90deg);
-      transform-origin: left top;
-      width: 100vh;
-      overflow-x: hidden;
-      position: absolute;
-      top: 100%;
-      left: 0;
+@media screen and (min-width: 320px) and (max-width: 500px) and (orientation: portrait){
+    #react-entry-point {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
     }
-  } */
+    #warning{
+        display:block;
+    }
+    #map{
+        height:1000;
+    }
+}
+
+@media screen and (min-width: 500px){
+    #warning{
+        display:none;
+    }
+    #mapify{
+        height:100;
+        background: red;
+        /* display:block;
+        margin-left:auto;
+        margin-right:auto; */
+        vertical-align: middle;
+    }
+    /* #map .js-plotly-plot .plotly .svg-container{
+        
+    } */
+    /* #map .js-plotly-plot .plot-container .svg-container .main-svg{
+        height: 1000;
+    } */
+    /* #map .js-plotly-plot{
+        height: 1000;
+        background: chartreuse;
+    } */
+}
 
 .dash-dropdown{
     margin:0.5rem 0;
@@ -21,16 +51,7 @@
     color:black
 }
 
-/* .main-svg{
-    padding:2em;
-    background: #222222;
-} */
-
-.layer rect{
-    background: #222222;
-}
-
-.nav-tabs .active.nav-link {
+.nav-tabs .active .nav-link {
     background:#375a7f;
     border-top: solid 1px white;
     border-right: solid 1px white;
@@ -41,75 +62,3 @@
 .DayPickerKeyboardShortcuts_buttonReset{
     display: none;
 }
-
-/* @media only screen and (max-width: 1200px) {
-    .svg-container{
-        height: 500;
-        width: auto;
-    }
-    .main-svg{
-        height: 500;
-        width: auto;
-    }
-  } */
-/* 
-@media (max-width: 400px) {
-    #map .js-plotly-plot .plot-container .svg-container{
-        height: 100;
-        width: auto;
-    }
-    #map .js-plotly-plot .plot-container .svg-container .main-svg{
-        height: 100;
-        width: auto;
-    }
-}  */
-
-
-/* Larger than mobile */
-/* @media (min-width: 400px) {
-    #map .js-plotly-plot .plot-container .svg-container{
-        height: 300;
-        width: auto;
-    }
-    #map .js-plotly-plot .plot-container .svg-container .main-svg{
-        height: 300;
-        width: auto;
-    }
-} */
-
-/* Larger than phablet (also point when grid becomes active) */
-/* @media (min-width: 550px) {
-    #map .js-plotly-plot .plot-container .svg-container{
-        height: 500;
-        width: auto;
-    }
-    #map .js-plotly-plot .plot-container .svg-container .main-svg{
-        height: 500;
-        width: auto;
-    }
-} */
-
-/* Larger than tablet */
-/* @media (min-width: 750px) {
-    #map .js-plotly-plot .plot-container .svg-container{
-        height: 700;
-        width: auto;
-    }
-    #map .js-plotly-plot .plot-container .svg-container .main-svg{
-        height: 700;
-        width: auto;
-    }
-} */
-
-/* Larger than desktop
-@media (min-width: 1000px) {
-    #map .js-plotly-plot .plot-container .svg-container{
-        height: 900;
-        width: auto;
-    }
-    #map .js-plotly-plot .plot-container .svg-container .main-svg{
-        height: 900;
-        width: auto;
-    }
-} */
-
